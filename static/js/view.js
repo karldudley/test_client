@@ -10,7 +10,8 @@ function logout() {
 
 async function renderFeed() {
     const feed = document.querySelector('section');
-    // feed.id = 'feed';
+    feed.id = 'feed';
+    
     const habits = await getAllHabits();
 
     if(habits.err){return}
@@ -33,6 +34,7 @@ async function renderFeed() {
 
 async function getAllHabits(){
     try {
+        const _id = localStorage.getItem('userID')
         const token = localStorage.getItem('token')
         const options = {
             headers: { 'Authorization': `Bearer ${token}`}
@@ -41,10 +43,11 @@ async function getAllHabits(){
         const data = await response.json();
         if(data.err){
             console.warn(data.err);
-            // logout();
+            logout();
         }
         return data;
     } catch (err) {
+        console.log("error")
         console.warn(err);
     }
 }
