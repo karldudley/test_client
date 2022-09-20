@@ -19,14 +19,17 @@ async function renderFeed() {
         const habit = document.createElement('div');
         // post.className = 'post';
         const name = document.createElement('h3');
-        const period = document.createElement('p');
-        const freq = document.createElement('p');
+        const target = document.createElement('p');
+        const current = document.createElement('p');
+        const streak = document.createElement('p');
         name.textContent = postData.name;
-        period.textContent = postData.period;
-        freq.textContent = postData.frequency;
+        target.textContent = "Target: " + postData.targetVal;
+        current.textContent = "Current: " + postData.currentVal;
+        streak.textContent = "Streak: " + postData.currentStreak;
         habit.appendChild(name);
-        habit.appendChild(period);
-        habit.appendChild(freq);
+        habit.appendChild(target);
+        habit.appendChild(current);
+        habit.appendChild(streak);
         feed.appendChild(habit);
     }
     habits.forEach(renderHabit);
